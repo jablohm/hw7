@@ -10,4 +10,43 @@ h1, h2, h3, h4, h5, h6, p {
   margin-bottom: 16px
 }
 
+#app {
+  margin: 50px
+}
 
+// ul {
+//   cursor: pointer;
+
+// }
+
+li {
+  cursor: pointer;
+  list-style-type: none;
+  height: 40px;
+  margin: 10px;
+  display: flex;
+  // justify-content: center;
+  align-items: center;
+  padding: 25px;
+}
+
+li:nth-child(odd) {
+  background-color: #363537;
+  color: #FFFFFF;
+}
+
+li:nth-child(even) {
+  background-color: #7a4c3f;
+  color: #FFFFFF;
+}
+
+button {
+  background-color: #363537;
+  color: #FFFFFF;
+  width: 100px;
+  height: 50px;
+  border-style: none;
+  border-radius: 15px;
+  cursor: pointer;
+  margin: 10px;
+}

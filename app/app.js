@@ -1,105 +1,105 @@
 var LISTS = [
-    {
-  menu: "Coffees",
-  mainMenu: [
+{
+  name: "Coffees",
+  listItems: [
 // ONE
     {
-      name: "Flight",
+      item: "Flight",
       price: "$25",
       image: "../img/home/main1.png",
       checked: false,
-      category: hot,
+      category: "hot",
     },
 // ONE
 
 // TWO
     {
-      name: "Iced Mocha Latte",
+      item: "Iced Mocha Latte",
       price: "$5",
       image: "../img/home/main2.png",
       checked: false,
-      category: cold,
+      category: "cold",
     },
 // TWO
 
 // THREE
     { 
-        name: "Poured Pour-Over",
+        item: "Poured Pour-Over",
         price: "$5",
         image: "../img/home/main3.png",
         checked: false,
-        category: hot,
+        category: "hot",
     },
 // THREE
 
 // FOUR
     { 
-        name: "Cappuccino",
+        item: "Cappuccino",
         price: "$5",
         image: "../img/home/main4.png",
         checked: false,
-        category: cold,
+        category: "cold",
 
     },
 // FOUR
 
 // FIVE
     { 
-        name: "Caramel Latte",
+        item: "Caramel Latte",
         price: "$5",
         image: "../img/home/main5.png",
         checked: false,
-        category: hot,
+        category: "hot",
     },
 // FIVE
 
 // SIX
     { 
-        name: "Cinnamon Latte",
+        item: "Cinnamon Latte",
         price: "$5",
         image: "../img/home/main6.png",
         checked: false,
-        category: hot, 
+        category: "hot", 
     },
 // SIX
 
 // SEVEN
     { 
-        name: "Straight Black",
+        item: "Straight Black",
         price: "$2",
         image: "../img/home/main7.png",
         checked: false,
-        category: hot, 
+        category: "hot", 
     },
 // SEVEN
 
 // EIGHT
     { 
-        name: "Iced Latte",
+        item: "Iced Latte",
         price: "$5",
         image: "../img/home/main8.png",
         checked: false,
-        category: cold, 
+        category: "cold", 
     },
 // EIGHT
 
 // NINE
     { 
-        name: "Iced Black",
+        item: "Iced Black",
         price: "$3",
         image: "../img/home/main9.png",
         checked: false,
-        category: cold, 
+        category: "cold", 
     },
 // NINE
 
 // TEN
     { 
-        name: "Spiced Espresso",
+        item: "Spiced Espresso",
         price: "$5",
         image: "../img/home/main10.png",
         checked: false,
-        category: hot, 
+        category: "hot", 
     },
 // TEN
 
@@ -107,106 +107,106 @@ var LISTS = [
 },
 
 {
-    sub: "More",
-    subMenu: [
+    name: "More",
+    listItems: [
   // ONE
       {
-        name: "House Medium Roast",
+        item: "House Medium Roast",
         price: "$10",
         image: "../img/more/sub1.png",
         checked: false,
-        category: whole,
+        category: "whole",
       },
   // ONE
   
   // TWO
       {
-        name: "House Blonde Roast",
+        item: "House Blonde Roast",
         price: "$10",  
         image: "../img/more/sub2.png",      
         checked: false,
-        category: ground,
+        category: "ground",
       },
   // TWO
   
   // THREE
       { 
-          name: "Pour Over I",
+          item: "Pour Over I",
           price: "$20",
           image: "../img/more/sub3.png",
           checked: false,
-          category: item,
+          category: "item",
       },
   // THREE
   
   // FOUR
       { 
-          name: "Pour Over II",
+          item: "Pour Over II",
           price: "$25",
           image: "../img/more/sub4.png",
           checked: false,
-          category: item,
+          category: "item",
   
       },
   // FOUR
   
   // FIVE
       { 
-          name: "House Dark Roast",
+          item: "House Dark Roast",
           price: "$10",
           image: "../img/more/sub5.png",
           checked: false,
-          category: whole,
+          category: "whole",
       },
   // FIVE
   
   // SIX
       { 
-          name: "House Mystery Roast",
+          item: "House Mystery Roast",
           price: "$10",
           image: "../img/more/sub6.png",
           checked: false,
-          category: whole, 
+          category: "whole", 
       },
   // SIX
   
   // SEVEN
       { 
-          name: "House Espresso Shot",
+          item: "House Espresso Shot",
           price: "$2",
           image: "../img/more/sub7.png",
           checked: false,
-          category: extra, 
+          category: "", 
       },
   // SEVEN
   
   // EIGHT
       { 
-          name: "Pour Over III",
+          item: "Pour Over III",
           price: "$30",
           image: "../img/more/sub8.png",
           checked: false,
-          category: item, 
+          category: "item", 
       },
   // EIGHT
   
   // NINE
       { 
-          name: "House Espresso",
+          item: "House Espresso",
           price: "$10",
           image: "../img/more/sub9.png",
           checked: false,
-          category: ground, 
+          category: "ground", 
       },
   // NINE
   
   // TEN
       { 
-          name: "Imported Roast",
+          item: "Imported Roast",
           price: "$15",
           image: "../img/more/sub10.png",
           checked: false,
-          category: ground, 
+          category: "ground", 
       },
   // TEN
   
@@ -216,8 +216,23 @@ var LISTS = [
 
 ];
 
+function loadListItems(itemIndex){
+    console.log(itemIndex);
+}
+
+function loadData(){
+    let listString = "<ul>";
+    $.each(LISTS, function(index, list){
+        listString += `<li id="${index}" onclick="loadListItems(${index})">${list.name}</li>`;
+    });
+    listString += "</ul>";
+
+    $("#app").html(listString);
+}
+
 function initListeners() {}
 
 $(document).ready(function () {
+    // loadData();
   initListeners();
 });
