@@ -210,11 +210,26 @@ var LISTS = [
   },
 ];
 
-function loadListItems(itemIndex) {
-  let listString = "<ul>";
+function itemChecked(element, listIndex, itemIndex ){
+    $(element).parent().toggleClass("strikethrough");
+    let checkedValue = !LISTS[listIndex].listItems[itemIndex].checked;
+    LISTS[listIndex].listItems[itemIndex].checked = checkedValue;
+    // console.log("checked" + LISTS);
 
-  $.each(LISTS[itemIndex].listItems, function (index, listItems) {
-    listString += `<li id="${index}">${listItems.item}</li>`;
+}
+    // TERNARY: a way to write an IF STATEMENT in a VERY SMALL LINE OF CODE
+// ${listItems.checked ? checked:""} 
+// BASICALLY IS SAYING: IF the list items key value, "checked", is true -> THEN we are going to apply the property "checked"
+
+function loadListItems(listIndex) {
+  let listString = `<button onclick="loadData()">Back</button><ul>`;
+
+  $.each(LISTS[listIndex].listItems, function (index, listItems) {
+    listString += `<li id="${index}">
+    <input ${listItems.checked ? (checked = "checked") : ""} type="checkbox" id="${index}" name="${listItems.item}" onclick="itemChecked(this, ${listIndex}, ${index})">
+
+    ${listItems.item}
+    </li>`;
   });
   listString += "</ul>";
 
