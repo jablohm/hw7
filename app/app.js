@@ -4,9 +4,7 @@ var LISTS = [
     listItems: [
       // ONE
       {
-        item: "Flight",
-        price: "$25",
-        image: "../img/home/main1.png",
+        item: "Big Order (4+ cups)",
         checked: false,
         category: "hot",
       },
@@ -15,8 +13,6 @@ var LISTS = [
       // TWO
       {
         item: "Iced Mocha Latte",
-        price: "$5",
-        image: "../img/home/main2.png",
         checked: false,
         category: "cold",
       },
@@ -25,8 +21,6 @@ var LISTS = [
       // THREE
       {
         item: "Poured Pour-Over",
-        price: "$5",
-        image: "../img/home/main3.png",
         checked: false,
         category: "hot",
       },
@@ -35,8 +29,6 @@ var LISTS = [
       // FOUR
       {
         item: "Cappuccino",
-        price: "$5",
-        image: "../img/home/main4.png",
         checked: false,
         category: "cold",
       },
@@ -45,8 +37,6 @@ var LISTS = [
       // FIVE
       {
         item: "Caramel Latte",
-        price: "$5",
-        image: "../img/home/main5.png",
         checked: false,
         category: "hot",
       },
@@ -55,8 +45,6 @@ var LISTS = [
       // SIX
       {
         item: "Cinnamon Latte",
-        price: "$5",
-        image: "../img/home/main6.png",
         checked: false,
         category: "hot",
       },
@@ -65,8 +53,6 @@ var LISTS = [
       // SEVEN
       {
         item: "Straight Black",
-        price: "$2",
-        image: "../img/home/main7.png",
         checked: false,
         category: "hot",
       },
@@ -75,8 +61,6 @@ var LISTS = [
       // EIGHT
       {
         item: "Iced Latte",
-        price: "$5",
-        image: "../img/home/main8.png",
         checked: false,
         category: "cold",
       },
@@ -85,8 +69,6 @@ var LISTS = [
       // NINE
       {
         item: "Iced Black",
-        price: "$3",
-        image: "../img/home/main9.png",
         checked: false,
         category: "cold",
       },
@@ -95,8 +77,6 @@ var LISTS = [
       // TEN
       {
         item: "Spiced Espresso",
-        price: "$5",
-        image: "../img/home/main10.png",
         checked: false,
         category: "hot",
       },
@@ -110,8 +90,6 @@ var LISTS = [
       // ONE
       {
         item: "House Medium Roast",
-        price: "$10",
-        image: "../img/more/sub1.png",
         checked: false,
         category: "whole",
       },
@@ -120,8 +98,6 @@ var LISTS = [
       // TWO
       {
         item: "House Blonde Roast",
-        price: "$10",
-        image: "../img/more/sub2.png",
         checked: false,
         category: "ground",
       },
@@ -129,9 +105,7 @@ var LISTS = [
 
       // THREE
       {
-        item: "Pour Over I",
-        price: "$20",
-        image: "../img/more/sub3.png",
+        item: "Pour Over Glass",
         checked: false,
         category: "item",
       },
@@ -139,9 +113,7 @@ var LISTS = [
 
       // FOUR
       {
-        item: "Pour Over II",
-        price: "$25",
-        image: "../img/more/sub4.png",
+        item: "Pour Over Kettle",
         checked: false,
         category: "item",
       },
@@ -150,8 +122,6 @@ var LISTS = [
       // FIVE
       {
         item: "House Dark Roast",
-        price: "$10",
-        image: "../img/more/sub5.png",
         checked: false,
         category: "whole",
       },
@@ -160,8 +130,6 @@ var LISTS = [
       // SIX
       {
         item: "House Mystery Roast",
-        price: "$10",
-        image: "../img/more/sub6.png",
         checked: false,
         category: "whole",
       },
@@ -170,8 +138,6 @@ var LISTS = [
       // SEVEN
       {
         item: "House Espresso Shot",
-        price: "$2",
-        image: "../img/more/sub7.png",
         checked: false,
         category: "",
       },
@@ -179,9 +145,7 @@ var LISTS = [
 
       // EIGHT
       {
-        item: "Pour Over III",
-        price: "$30",
-        image: "../img/more/sub8.png",
+        item: "Pour Over Filters",
         checked: false,
         category: "item",
       },
@@ -190,8 +154,6 @@ var LISTS = [
       // NINE
       {
         item: "House Espresso",
-        price: "$10",
-        image: "../img/more/sub9.png",
         checked: false,
         category: "ground",
       },
@@ -200,8 +162,6 @@ var LISTS = [
       // TEN
       {
         item: "Imported Roast",
-        price: "$15",
-        image: "../img/more/sub10.png",
         checked: false,
         category: "ground",
       },
@@ -221,6 +181,24 @@ function itemChecked(element, listIndex, itemIndex ){
 // ${listItems.checked ? checked:""} 
 // BASICALLY IS SAYING: IF the list items key value, "checked", is true -> THEN we are going to apply the property "checked"
 
+
+function addItem(listIndex) {
+    let newItemName = $("#addItem").val();
+    let newItemObj = {
+        item: newItemName,
+        checked: false,
+        category: "",
+    };
+    // calling list/array, using idxval to determine which list, then targeting array of listItems by using .push (shoves new item into that array)
+    LISTS[listIndex].listItems.push(newItemObj);
+    // console.log(LISTS);
+    loadListItems(listIndex);
+}
+
+
+
+
+
 function loadListItems(listIndex) {
   let listString = `<button onclick="loadData()">Back</button><ul>`;
 
@@ -229,17 +207,25 @@ function loadListItems(listIndex) {
     <input ${listItems.checked ? (checked = "checked") : ""} type="checkbox" id="${index}" name="${listItems.item}" onclick="itemChecked(this, ${listIndex}, ${index})">
 
     ${listItems.item}
-    </li>`;
+     </li>`;
   });
-  listString += "</ul>";
+  listString += `</ul>
+<div class="addItemInput">
+    <input id="addItem" type="text">
+        <button onclick="addItem(${listIndex})">Add an Item</button>
+</div>`;
 
   $("#app").html(listString);
 }
 
+
+
+
+
 function loadData() {
   let listString = "<ul>";
   $.each(LISTS, function (index, list) {
-    listString += `<li id="${index}" onclick="loadListItems(${index})">${list.name}</li>`;
+    listString += `<li id="${index}" onclick="loadListItems(${index})">${list.name} <span class="right">Items: ${list.listItems.length}</span></li>`;
   });
   listString += "</ul>";
 

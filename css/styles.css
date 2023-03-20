@@ -24,6 +24,7 @@ li {
   display: flex;
   align-items: center;
   padding: 25px;
+  border-radius: 15px;
 }
 
 li:nth-child(odd) {
@@ -56,6 +57,20 @@ li input {
 
 li.strikethrough {
   text-decoration: line-through;
+}
+
+.addItemInput {
+  margin: 10px;
+}
+
+.addItemInput #addItem {
+  border-style: solid;
+  border-width: 2px;
+  border-color: #7a4c3f;
+  height: 10px;
+  width: 200px;
+  border-radius: 15px;
+  padding: 20px;
 }
 
 nav {
