@@ -23,8 +23,9 @@ li {
   margin: 10px;
   display: flex;
   align-items: center;
-  padding: 25px;
+  padding-left: 25px;
   border-radius: 15px;
+  position: relative;
 }
 
 li:nth-child(odd) {
@@ -71,6 +72,11 @@ li.strikethrough {
   width: 200px;
   border-radius: 15px;
   padding: 20px;
+}
+
+.right {
+  position: absolute;
+  right: 15px;
 }
 
 nav {

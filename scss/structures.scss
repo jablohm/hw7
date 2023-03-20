@@ -27,8 +27,9 @@ li {
   display: flex;
   // justify-content: center;
   align-items: center;
-  padding: 25px;
+  padding-left: 25px;
   border-radius: 15px;
+  position: relative;
 }
 
 li:nth-child(odd) {
@@ -76,4 +77,9 @@ li.strikethrough {
   padding: 20px;
 
   
+}
+
+.right {
+  position: absolute;
+  right:15px;
 }
