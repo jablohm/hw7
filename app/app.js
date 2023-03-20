@@ -197,7 +197,13 @@ function addItem(listIndex) {
 
 
 
+function deleteItem(listIndex, index){
+    LISTS[listIndex].listItems.splice(index, 1);
+    // splice tells array to find indxval, remove it, and ONLY remove that specific 1 (2 would remove item + item before or after it)
+    loadListItems(listIndex);
 
+
+}
 
 function loadListItems(listIndex) {
   let listString = `<button onclick="loadData()">Back</button><ul>`;
@@ -205,9 +211,9 @@ function loadListItems(listIndex) {
   $.each(LISTS[listIndex].listItems, function (index, listItems) {
     listString += `<li id="${index}" class="${listItems.checked ? "strikethrough": ""}">
     <input ${listItems.checked ? (checked = "checked") : ""} type="checkbox" id="${index}" name="${listItems.item}" onclick="itemChecked(this, ${listIndex}, ${index})">
-
-    ${listItems.item}
-     </li>`;
+    <span>${listItems.item}</span>
+    <span class="delete" onclick="deleteItem(${listIndex}, ${index})">Delete Item</span>
+    </li>`;
   });
   listString += `</ul>
 <div class="addItemInput">
