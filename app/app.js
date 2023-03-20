@@ -225,7 +225,7 @@ function loadListItems(listIndex) {
   let listString = `<button onclick="loadData()">Back</button><ul>`;
 
   $.each(LISTS[listIndex].listItems, function (index, listItems) {
-    listString += `<li id="${index}">
+    listString += `<li id="${index}" class="${listItems.checked ? "strikethrough": ""}">
     <input ${listItems.checked ? (checked = "checked") : ""} type="checkbox" id="${index}" name="${listItems.item}" onclick="itemChecked(this, ${listIndex}, ${index})">
 
     ${listItems.item}
